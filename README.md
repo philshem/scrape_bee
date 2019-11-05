@@ -21,8 +21,7 @@ Requires BeautifulSoup and requests.
 
 Alternative usage is to provide a URL, for example, with the wayback machine:
 
-    echo https://web.archive.org/web/20190727114759/https://www.nytimes.com/puzzles/spelling-bee > url.txt
-    python3 scrape_bee.py url.txt
+    echo https://web.archive.org/web/20190727114759/https://www.nytimes.com/puzzles/spelling-bee | python3 scrape_bee.py /dev/stdin
 
 You can also use the python library [waybackpack](https://github.com/jsvine/waybackpack) to download all URLs from the wayback machine, and then pass those urls to the scrape_bee.py script:
 
