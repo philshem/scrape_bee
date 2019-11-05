@@ -31,7 +31,7 @@ if __name__ == '__main__':
 	# the answers are stored as a json inside the page source
 	if len(sys.argv) == 1:
 		# get today's puzzle
-		url = ['https://www.nytimes.com/puzzles/spelling-bee']
+		urls = ['https://www.nytimes.com/puzzles/spelling-bee']
 	elif len(sys.argv) == 2:
 		try:
 			# get list of urls to scrape old puzzles from wayback machine
