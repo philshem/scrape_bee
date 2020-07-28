@@ -3,13 +3,13 @@
 import requests
 from bs4 import BeautifulSoup
 import json
-import os
-import sys
+import os,sys
+os.chdir(sys.path[0])
 
 def scrape_bee(url):
 
 	r = requests.get(url)
-	soup = BeautifulSoup(r.text,'html5lib')
+	soup = BeautifulSoup(r.text,'html.parser')
 
 	element = soup.find('div', class_='pz-game-screen')
 	element = element.find('script')
@@ -47,9 +47,5 @@ if __name__ == '__main__':
 		exit(0)
 
 	for u in urls:
-		try:
-			scrape_bee(u.strip())
-			print('INFO: Valid html in',u.strip())
-		except:
-			print('WARNING: Non-matching html in',u.strip())
+		scrape_bee(u.strip())
 
