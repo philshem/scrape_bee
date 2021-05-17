@@ -8,13 +8,15 @@ os.chdir(sys.path[0])
 
 def scrape_bee(url):
 
-	r = requests.get(url)
+	r = requests.get(url, headers= {'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/39.0.2171.95 Safari/537.36'})
 	soup = BeautifulSoup(r.text,'html.parser')
 
+
 	element = soup.find('div', class_='pz-game-screen')
+
 	element = element.find('script')
 
-	data = element.text.replace('window.gameData = ','')
+	data = element.contents[0].replace('window.gameData = ','')
 
 	data = json.loads(data)
 	print(json.dumps(data, indent = 4))
@@ -34,7 +36,7 @@ if __name__ == '__main__':
 		urls = ['https://www.nytimes.com/puzzles/spelling-bee']
 	elif len(sys.argv) == 2:
 		try:
-			# get list of urls to scrape old puzzles from wayback machine
+			# get list of urls to scrape old puzzles from wayback machi	ne
 			with open(sys.argv[1]) as f:
 				urls = f.readlines()
 		except:
